@@ -1,0 +1,1423 @@
+/* ===========================================================
+   KROMO.AI — sito one page
+   Colori:  arancio #FB6441 · scuro #292A25 · crema #F8F1E9
+   Griglia: 12 colonne, margine 80, gutter 45
+   =========================================================== */
+
+/* --- FONT DEL PROGETTO ---
+   Google Sans Flex e Roboto Flex stanno dentro la cartella /font:
+   non servono richieste a Google, il sito funziona anche offline. */
+
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("font/GoogleSansFlex-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("font/GoogleSansFlex-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("font/GoogleSansFlex-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Roboto Flex è un font variabile: un solo file per tutti i pesi */
+@font-face {
+  font-family: "Roboto Flex";
+  src: url("font/RobotoFlex-Variable.woff2") format("woff2-variations"), url("font/RobotoFlex-Variable.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hagrid: il carattere del titolo della home */
+@font-face {
+  font-family: "Hagrid";
+  src: url("font/Hagrid-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Freehand Blockletter: il carattere del banner "Non è vero" */
+@font-face {
+  font-family: "Freehand Blockletter";
+  src: url("font/FreehandBlockletter.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --arancio: #FB6441;
+  --scuro: #292A25;
+  --crema: #F8F1E9;
+
+  /* colori delle barre dei grafici */
+  --rosso-scuro: #8E3B24;
+  --rosa: #F2907A;
+  --rosa-chiaro: #F7C6BB;
+
+  /* --- SCALA FLUIDA ---
+     Ogni misura cresce da sola fra 390px (cellulare) e 1440px (desktop).
+     Il primo valore è il minimo, il terzo il massimo. --- */
+
+  /* --u è l'unità di misura del progetto: vale 1px a 1440 di larghezza
+     e cresce o cala in proporzione insieme alla finestra.
+     Tutte le misure fisse del disegno sono scritte come calc(N * var(--u)),
+     così il sito è sempre la stessa composizione, solo più grande o più piccola. */
+  --u: 0.06944vw;
+  /* non avanza più niente fuori dalla griglia: la griglia cresce con lo schermo */
+  --fuori: 0px;
+
+  --margine: max(clamp(30px, 11.43px + 4.762vw, 80px), calc(80 * var(--u)));
+  --gutter:  max(clamp(20px, 10.71px + 2.381vw, 45px), calc(45 * var(--u)));
+
+  /* la display cresce in proporzione alla larghezza: così a 1440 è 96px
+     e la seconda riga sta sempre su una riga sola */
+  --t-display:    max(clamp(40px, 6.667vw, 96px), calc(96 * var(--u)));
+  --t-display-i:  max(clamp(48px, 6.944vw, 100px), calc(100 * var(--u)));
+  --t-sub:        max(clamp(20px, 16.29px + 0.952vw, 30px), calc(30 * var(--u)));
+  --t-sub-i:      max(clamp(26px, 21.69px + 1.105vw, 37.6px), calc(37.6 * var(--u)));
+  --t-h1:         max(clamp(28px, 14.6px + 3.429vw, 64px), calc(64 * var(--u)));
+  --t-h1-i:       max(clamp(38px, 26.1px + 3.048vw, 70px), calc(70 * var(--u)));
+  --t-testo:      max(clamp(17px, 12.42px + 1.221vw, 30px), calc(30 * var(--u)));
+  --t-testo-i:    max(clamp(24.6px, 20.80px + 1.014vw, 35.2px), calc(35.2 * var(--u)));
+  --t-piccolo:    max(clamp(16px, 14.5px + 0.381vw, 20px), calc(20 * var(--u)));
+  --t-piccolo-i:  max(clamp(24px, 22.9px + 0.286vw, 27px), calc(27 * var(--u)));
+  --t-frase:      max(clamp(28px, 17.6px + 2.667vw, 56px), calc(56 * var(--u)));
+  --t-frase-i:    max(clamp(34px, 22.1px + 3.048vw, 66px), calc(66 * var(--u)));
+  --t-numero:     max(clamp(48px, 16.8px + 8.000vw, 132px), calc(132 * var(--u)));
+  --t-numero-2:   max(clamp(40px, 34.1px + 1.524vw, 56px), calc(56 * var(--u)));
+  --t-numero-med: max(clamp(32px, 20.1px + 3.048vw, 64px), calc(64 * var(--u)));
+  --t-etic:       max(clamp(18px, 13.5px + 1.143vw, 30px), calc(30 * var(--u)));
+  --t-etic-i:     max(clamp(24px, 20.3px + 0.952vw, 34px), calc(34 * var(--u)));
+  --t-barra:      max(clamp(15px, 11.3px + 0.952vw, 25px), calc(25 * var(--u)));
+  --t-barra-i:    max(clamp(20px, 16.7px + 0.857vw, 29px), calc(29 * var(--u)));
+  --t-retro:      max(clamp(18px, 13.5px + 1.143vw, 30px), calc(30 * var(--u)));
+  --t-retro-i:    max(clamp(25px, 20.2px + 1.238vw, 38px), calc(38 * var(--u)));
+
+  /* misura del testo del banner: la banda nera è alta uguale */
+  --testo-banner: max(clamp(80px, 39.1px + 10.476vw, 190px), calc(190 * var(--u)));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* niente scorrimento laterale: le immagini che sbordano vengono tagliate */
+html, body {
+  overflow-x: hidden;
+}
+
+/* le sezioni si fermano sotto la navbar, non sotto di essa */
+section, header, footer {
+  scroll-margin-top: 110px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--crema);
+  color: var(--scuro);
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* contenitore: tiene tutto dentro la griglia */
+.contenitore {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--margine);
+  padding-right: var(--margine);
+}
+
+
+/* ===========================================================
+   STILI DI TESTO
+   =========================================================== */
+
+.display-hero {
+  font-family: "Hagrid", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: var(--t-display);
+  line-height: var(--t-display-i);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+/* D/Sub Hero */
+.sub-hero {
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 300;
+  font-size: var(--t-sub);
+  line-height: var(--t-sub-i);
+  letter-spacing: 0;
+  text-align: left;
+  margin: 0;
+}
+
+h1, .h1 {
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--t-h1);
+  line-height: var(--t-h1-i);
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* D/text — Roboto Flex 30 / 35.2 */
+.testo {
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 200;
+  font-size: var(--t-testo);
+  line-height: var(--t-testo-i);
+  /* 2%: è la crenatura che riproduce esattamente gli a capo del progetto */
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* testo corrente più piccolo (colonne, schede, footer) */
+.testo-piccolo {
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  font-size: var(--t-piccolo);
+  line-height: var(--t-piccolo-i);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* i due paragrafi della sezione scura sono D/text in Light */
+.due-colonne .testo {
+  font-weight: 300;
+}
+
+.arancio { color: var(--arancio); }
+.crema { color: var(--crema); }
+
+
+/* ===========================================================
+   NAVBAR — marchio a sinistra, menu a destra
+   =========================================================== */
+
+.navbar {
+  position: fixed;
+  top: calc(43 * var(--u));
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.navbar-dentro {
+  margin: 0 auto;
+  padding: 0 var(--margine);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* il marchio è un link, ma non deve prendere il padding
+   della regola generica .navbar a: altrimenti si sposta di 16px
+   e non è più allineato col logo del footer.
+   Dentro ci sono due versioni del marchio, una sopra l'altra:
+   quella scura e quella chiara. Si scambiano con una dissolvenza
+   a seconda del colore di fondo su cui si trova la navbar. */
+.marchio {
+  padding: 0 !important;
+  border-radius: 0;
+  position: relative;
+  display: block;
+}
+
+.marchio .logo-chiaro {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.marchio img {
+  transition: opacity 0.3s ease;
+}
+
+.marchio:hover {
+  background: none;
+}
+
+.marchio img {
+  height: calc(52 * var(--u));
+  width: auto;
+}
+
+.navbar-pillola {
+  display: flex;
+  align-items: center;
+  gap: calc(30 * var(--u));
+  background-color: var(--arancio);
+  border-radius: 999px;
+  padding: calc(10 * var(--u)) calc(38 * var(--u));
+}
+
+.navbar a {
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--crema);
+  text-decoration: none;
+  padding: calc(10 * var(--u));
+  border-radius: 999px;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ===========================================================
+   NAVBAR CHE CAMBIA COLORE
+   La barra è fissa, quindi mentre si scorre si trova sopra fondi
+   di colore diverso. Il JS scrive su <body> l'attributo
+   data-navbar con il colore di quello che c'è sotto, e qui
+   ribaltiamo i colori perché resti sempre leggibile.
+
+   sotto il crema  -> barra scura, marchio scuro
+   sotto l'arancio -> barra chiara, marchio chiaro
+   sotto lo scuro  -> barra chiara, marchio chiaro
+   =========================================================== */
+
+/* --- sopra un fondo color crema --- */
+body[data-navbar="crema"] .navbar-pillola {
+  background-color: var(--scuro);
+}
+
+body[data-navbar="crema"] .navbar a {
+  color: var(--crema);
+}
+
+body[data-navbar="crema"] .navbar a:hover {
+  background-color: rgba(248, 241, 233, 0.16);
+}
+
+body[data-navbar="crema"] .navbar .bottone-kromo {
+  background-color: var(--arancio);
+  color: var(--crema) !important;
+}
+
+body[data-navbar="crema"] .navbar .bottone-kromo:hover {
+  background-color: #e25433;
+}
+
+body[data-navbar="crema"] .burger span {
+  background-color: var(--scuro);
+}
+
+body[data-navbar="crema"] .logo-scuro  { opacity: 1; }
+body[data-navbar="crema"] .logo-chiaro { opacity: 0; }
+
+/* --- sopra un fondo arancione o scuro --- */
+body[data-navbar="arancio"] .navbar-pillola,
+body[data-navbar="scuro"] .navbar-pillola {
+  background-color: var(--crema);
+}
+
+body[data-navbar="arancio"] .navbar a,
+body[data-navbar="scuro"] .navbar a {
+  color: var(--scuro);
+}
+
+body[data-navbar="arancio"] .navbar a:hover,
+body[data-navbar="scuro"] .navbar a:hover {
+  background-color: rgba(41, 42, 37, 0.10);
+}
+
+body[data-navbar="arancio"] .navbar .bottone-kromo,
+body[data-navbar="scuro"] .navbar .bottone-kromo {
+  background-color: var(--arancio);
+  color: var(--crema) !important;
+}
+
+body[data-navbar="arancio"] .navbar .bottone-kromo:hover,
+body[data-navbar="scuro"] .navbar .bottone-kromo:hover {
+  background-color: #e25433;
+}
+
+body[data-navbar="arancio"] .burger span,
+body[data-navbar="scuro"] .burger span {
+  background-color: var(--crema);
+}
+
+body[data-navbar="arancio"] .logo-scuro,
+body[data-navbar="scuro"] .logo-scuro   { opacity: 0; }
+body[data-navbar="arancio"] .logo-chiaro,
+body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
+
+/* la pillola cambia colore con una dissolvenza, non di scatto */
+.navbar-pillola,
+.navbar a,
+.burger span {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* pulsante burger: si vede solo sul cellulare */
+.burger {
+  display: none;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--scuro);
+}
+
+/* menu a schermo intero */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: var(--arancio);
+  padding: 24px var(--margine) 40px;
+  display: flex;
+  flex-direction: column;
+  /* fermo aspetta fuori schermo a sinistra */
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.35s ease, visibility 0.35s;
+}
+
+/* aperto: scivola dentro */
+.menu[data-aperto="1"] {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* in chiusura: esce dal lato destro */
+.menu[data-aperto="uscita"] {
+  transform: translateX(100%);
+  visibility: visible;
+}
+
+.menu-chiudi {
+  align-self: flex-end;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--crema);
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.menu-voci {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+}
+
+.menu-voci a {
+  display: block;
+  text-align: center;
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--crema);
+  text-decoration: none;
+  padding: 34px 0 22px;
+  border-bottom: 1px solid var(--crema);
+}
+
+.menu .bottone-kromo {
+  display: block;
+  text-align: center;
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 20px 24px !important;
+}
+
+/* bottone che porta alla chat con Kromo */
+.bottone-kromo {
+  background-color: var(--scuro);
+  color: var(--crema) !important;
+  padding: calc(10 * var(--u)) calc(24 * var(--u)) !important;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.bottone-kromo:hover {
+  background-color: #14150f;
+  transform: scale(1.03);
+}
+
+
+/* ===========================================================
+   HERO
+   =========================================================== */
+
+.hero {
+  position: relative;
+  /* la hero è alta 1024 quando lo schermo è largo 1440, e cresce o
+     cala in proporzione: la sezione nera comincia sempre lì,
+     qualunque sia l'altezza della finestra */
+  height: calc(1024 * var(--u));
+  overflow: hidden;
+}
+
+.hero-testi {
+  padding-top: calc(144 * var(--u));
+  position: relative;
+  z-index: 2;
+}
+
+.hero .display-hero {
+  color: var(--arancio);
+}
+
+.freccia-giu {
+  color: var(--arancio);
+  font-size: calc(27 * var(--u));
+  line-height: 1;
+  /* margin-bottom a zero: il margine di default del <p>
+     schiaccerebbe la distanza dal sottotitolo */
+  margin: calc(12 * var(--u)) 0 0;
+}
+
+.sub-hero {
+  margin-top: calc(13 * var(--u));
+  /* gli a capo sono scritti a mano nel testo, così le tre righe
+     restano identiche al progetto a qualsiasi larghezza */
+  max-width: none;
+}
+
+/* i libri riempiono quasi tutta la larghezza dello schermo */
+.hero-immagine {
+  position: absolute;
+  /* centrata: sopra i 1440 smette di crescere e resta al centro */
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(346 * var(--u));
+  /* 105,3%: così i libri arrivano esatti al fondo della hero,
+     che nel progetto è alta 1024 a 1440 di larghezza */
+  width: 105.3%;
+  max-width: none;
+  z-index: 1;
+}
+
+/* da tablet in su la seconda riga del titolo non va mai a capo:
+   è più larga della colonna di testo, esattamente come nel progetto */
+@media (min-width: 1001px) {
+  .hero .display-hero { white-space: nowrap; }
+}
+
+/* pallino arancione con la freccia in basso a destra */
+.pallino-scroll {
+  position: absolute;
+  right: calc(var(--fuori) + var(--margine));
+  bottom: calc(44 * var(--u));
+  z-index: 3;
+  width: calc(75 * var(--u));
+  height: calc(75 * var(--u));
+  border-radius: 50%;
+  background-color: var(--arancio);
+  color: var(--crema);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(28 * var(--u));
+  text-decoration: none;
+  transition: transform 0.18s ease;
+}
+
+.pallino-scroll:hover {
+  transform: translateY(6px);
+}
+
+
+/* ===========================================================
+   SEZIONI COLORATE
+   =========================================================== */
+
+.sezione {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.sezione-scura {
+  background-color: var(--scuro);
+  color: var(--crema);
+}
+
+.sezione-arancio {
+  background-color: var(--arancio);
+  color: var(--crema);
+}
+
+.sezione-crema {
+  background-color: var(--crema);
+  color: var(--scuro);
+}
+
+/* due colonne di testo */
+.due-colonne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  margin-top: calc(76 * var(--u));
+}
+
+/* nella sezione dei manifesti il testo sta su una colonna sola */
+.colonna-unica {
+  margin-top: calc(71 * var(--u));
+  max-width: calc(620 * var(--u));
+}
+
+.colonna-unica p + p {
+  margin-top: calc(35 * var(--u));
+}
+
+/* la sezione del fenomeno ha il titolo più staccato dall'alto */
+#fenomeno {
+  padding-top: calc(87 * var(--u));
+  padding-bottom: calc(158 * var(--u));
+}
+
+
+/* ===========================================================
+   CARD DEI DATI
+   =========================================================== */
+
+.dati {
+  margin-top: calc(115 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(23 * var(--u));
+}
+
+.riga-dati {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: calc(30 * var(--u));
+}
+
+.card {
+  position: relative;
+  /* ritaglia le forme (arco, triangoli, barre) dentro il bordo della card */
+  overflow: hidden;
+  background-color: var(--crema);
+  color: var(--scuro);
+  border-radius: calc(30 * var(--u));
+  padding: calc(40 * var(--u)) calc(58 * var(--u));
+  transition: transform 0.18s ease;
+}
+
+.numero-grande {
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--t-numero);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.numero-medio {
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--t-numero-med);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 calc(12 * var(--u)) 0;
+}
+
+.etichetta {
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  font-size: var(--t-etic);
+  line-height: var(--t-etic-i);
+  margin-top: calc(30 * var(--u));
+}
+
+/* --- griglia di pallini: sostituisce le barre sul cellulare --- */
+.pallini {
+  display: none;
+  grid-template-columns: repeat(10, 1fr);
+  /* in pixel: un gap in percentuale sulle righe verrebbe calcolato
+     su un'altezza indefinita e schiaccerebbe i pallini */
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.pallini span {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--arancio);
+}
+
+.pallini .spento { background-color: var(--scuro); }
+
+/* il pallino a metà vale lo 0,5% */
+.pallini .mezzo {
+  background: linear-gradient(90deg, var(--arancio) 50%, var(--scuro) 50%);
+}
+
+/* il retro della card grande esiste solo sul cellulare */
+.card-grande .retro {
+  display: none;
+}
+
+/* --- card grande con 92,5% e le tre barre --- */
+.card-grande {
+  display: grid;
+  grid-template-columns: 1fr 1.553fr;
+  gap: calc(40 * var(--u));
+  aspect-ratio: 1280 / 385.5;
+  padding: calc(70 * var(--u)) calc(76 * var(--u)) 0 calc(62 * var(--u));
+}
+
+.gruppo-barre {
+  display: flex;
+  gap: calc(48.5 * var(--u));
+  align-items: flex-end;
+}
+
+.colonna-barra {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.barra {
+  padding: calc(20 * var(--u)) calc(16 * var(--u));
+  color: var(--crema);
+  font-weight: 300;
+  font-size: var(--t-barra);
+  line-height: var(--t-barra-i);
+}
+
+.barra-1 { background-color: var(--rosso-scuro); height: calc(230 * var(--u)); }
+.barra-2 { background-color: var(--arancio); height: calc(172 * var(--u)); }
+.barra-3 { background-color: var(--rosa); height: calc(53 * var(--u)); }
+
+/* --- card del 60% --- */
+.riga-dati .card {
+  aspect-ratio: 1 / 0.994;
+  padding: calc(30 * var(--u));
+}
+
+/* --- le card della seconda riga si girano al passaggio del mouse ---
+   .fronte è la grafica (numero + forma), .retro è la spiegazione.
+   Sono sovrapposte: una sfuma via, l'altra compare. */
+.riga-dati .fronte,
+.riga-dati .retro {
+  position: absolute;
+  transition: opacity 0.25s ease;
+}
+
+/* la faccia con la grafica occupa tutta la card, il padding sta dentro */
+.riga-dati .fronte {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: calc(24 * var(--u)) calc(36 * var(--u)) calc(30 * var(--u)) calc(30 * var(--u));
+}
+
+.riga-dati .retro {
+  top: calc(30 * var(--u));
+  left: calc(30 * var(--u));
+  right: calc(30 * var(--u));
+  bottom: calc(30 * var(--u));
+}
+
+.riga-dati .retro {
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-weight: 300;
+  font-size: var(--t-retro);
+  line-height: var(--t-retro-i);
+  letter-spacing: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+/* col mouse basta passarci sopra */
+@media (hover: hover) {
+  .riga-dati .card:hover .fronte { opacity: 0; }
+  .riga-dati .card:hover .retro  { opacity: 1; }
+}
+
+/* al tocco serve un click: il JS mette la classe "girata" */
+.riga-dati .card.girata .fronte { opacity: 0; }
+.riga-dati .card.girata .retro  { opacity: 1; }
+
+/* i numeri della seconda riga: Roboto Flex regular, crenatura -3% */
+.riga-dati .numero-grande {
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--t-numero-2);
+  letter-spacing: -0.03em;
+}
+
+.card-cerchio .numero-grande {
+  text-align: right;
+}
+
+.arco {
+  position: absolute;
+  left: -13.36%;
+  top: 5.76%;
+  width: 109.1%;
+  aspect-ratio: 1;
+  /* spicchio di cerchio: il gradiente conico disegna l'arco,
+     la maschera radiale scava il buco al centro.
+     Così i tagli alle estremità sono netti e radiali. */
+  background: conic-gradient(from 122deg, var(--arancio) 0 216deg, transparent 216deg 360deg);
+  -webkit-mask: radial-gradient(circle closest-side, transparent 0 51.2%, #000 51.4%);
+  mask: radial-gradient(circle closest-side, transparent 0 51.2%, #000 51.4%);
+  border-radius: 50%;
+}
+
+/* --- card del +30,6% --- */
+.pila-triangoli {
+  position: absolute;
+  top: -9.81%;
+  left: 73.3%;
+  transform: translateX(-50%);
+  width: 43.6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* triangoli ritagliati: così restano in proporzione anche
+   quando la card si stringe */
+.triangolo {
+  width: 100%;
+  aspect-ratio: 178.2 / 154.8;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.tri-1 { background-color: var(--rosso-scuro); }
+.tri-2 { background-color: var(--arancio); }
+.tri-3 { background-color: var(--rosa); }
+
+.card-triangoli .numero-grande {
+  position: absolute;
+  left: calc(22 * var(--u));
+  bottom: calc(38 * var(--u));
+}
+
+/* --- card 800M / 1,2M --- */
+.grafico-confronto {
+  position: absolute;
+  left: 11.06%;
+  right: 14.63%;
+  bottom: 0;
+  display: flex;
+  gap: 0;
+  align-items: flex-end;
+}
+
+/* due colonne uguali: i rettangoli hanno la stessa larghezza */
+.col-confronto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.col-confronto .numero-grande {
+  margin-bottom: calc(17 * var(--u));
+}
+
+.barra-alta {
+  width: 100%;
+  height: calc(307 * var(--u));
+  background-color: var(--rosa-chiaro);
+}
+
+.barra-bassa {
+  width: 100%;
+  height: calc(16 * var(--u));
+  background-color: var(--rosa);
+}
+
+
+/* ===========================================================
+   NASCE KROMO
+   =========================================================== */
+
+.sezione-nasce {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(135 * var(--u));
+  padding-bottom: calc(170 * var(--u));
+}
+
+.nasce-testi {
+  max-width: calc(620 * var(--u));
+  position: relative;
+  z-index: 2;
+}
+
+.nasce-testi p + p {
+  margin-top: calc(28 * var(--u));
+}
+
+/* il primo paragrafo è staccato dal titolo */
+.nasce-testi .testo:first-of-type {
+  margin-top: calc(79 * var(--u));
+}
+
+/* i due paragrafi sono D/text in Light, come nelle altre sezioni */
+.nasce-testi .testo {
+  font-weight: 300;
+}
+
+/* il camaleonte appeso: entra da sopra, tagliato dal bordo alto.
+   misure in vw, così resta nelle stesse proporzioni a ogni larghezza */
+.kromo-occhiali {
+  position: absolute;
+  top: calc(-191.5 * var(--u));
+  right: var(--fuori);
+  width: calc(763 * var(--u));
+  max-width: none;
+  z-index: 1;
+}
+
+.frase-grande {
+  position: relative;
+  z-index: 2;
+  margin: calc(85 * var(--u)) 0 0;
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--t-h1);
+  line-height: var(--t-h1-i);
+}
+
+
+/* ===========================================================
+   BANNER CHE SCORRE + BANDA NERA
+   =========================================================== */
+
+/* striscia nera alta quanto il testo, con dentro le lettere che scorrono */
+.banner {
+  background-color: var(--scuro);
+  height: var(--testo-banner);
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.banner-riga {
+  display: inline-flex;
+  gap: calc(70 * var(--u));
+  animation: scorri 26s linear infinite;
+}
+
+.banner-riga span {
+  font-family: "Freehand Blockletter", "Bradley Hand", "Chalkboard SE", "Comic Sans MS", cursive;
+  color: var(--arancio);
+  /* un filo più piccolo del nastro e spostato giù di poco:
+     in questo carattere l'accento della È sale molto sopra le
+     maiuscole e senza questo aggiustamento veniva tagliato */
+  font-size: calc(var(--testo-banner) * 0.84);
+  line-height: 1;
+  transform: translateY(0.08em);
+}
+
+@keyframes scorri {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* ===========================================================
+   SEZIONE ARANCIONE — KROMO NON È GENTILE
+   =========================================================== */
+
+.sezione-gentile {
+  position: relative;
+  padding-top: calc(83 * var(--u));
+  padding-bottom: 0;
+}
+
+/* questo riquadro ritaglia l'occhio dentro la fascia arancione.
+   bottom: 278px è esattamente dove comincia la sezione nera, quindi
+   l'occhio si ferma lì da solo e può stare davanti alle schede (z-index 4) */
+.ritaglio-occhio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(278 * var(--u));
+  overflow: hidden;
+  z-index: 4;
+}
+
+.gentile-testi {
+  position: relative;
+  z-index: 2;
+  max-width: calc(975 * var(--u));
+}
+
+/* stessa misura del titolo qui sopra */
+.gentile-testi .testo {
+  font-family: "Google Sans Flex", Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--t-h1);
+  line-height: var(--t-h1-i);
+  letter-spacing: 0;
+  margin-top: calc(71 * var(--u));
+}
+
+.gentile-testi .testo-piccolo {
+  font-size: var(--t-testo);
+  line-height: var(--t-testo-i);
+  margin-top: calc(50 * var(--u));
+  max-width: calc(600 * var(--u));
+  color: #F8F1E9;
+}
+
+/* l'occhio è attaccato al bordo destro della pagina */
+.kromo-scocciato {
+  position: absolute;
+  top: calc(-190 * var(--u));
+  right: calc(var(--fuori) - 11 * var(--u));
+  height: calc(1233 * var(--u));
+  width: auto;
+  max-width: none;
+}
+
+/* le due schede escono dall'arancione ed entrano nel nero */
+.due-schede {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 2.059fr;
+  gap: calc(29 * var(--u));
+  margin-top: calc(131 * var(--u));
+}
+
+.scheda {
+  background-color: var(--crema);
+  color: var(--scuro);
+  border-radius: calc(34 * var(--u));
+  padding: calc(50 * var(--u)) calc(8 * var(--u)) calc(65 * var(--u)) calc(34 * var(--u));
+  min-height: calc(400 * var(--u));
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease;
+}
+
+/* la seconda scheda è rientrata di più, come nel progetto */
+.due-schede .scheda:last-child {
+  padding-left: calc(58 * var(--u));
+  padding-right: calc(34 * var(--u));
+}
+
+.due-schede .scheda:last-child .testo-piccolo {
+  max-width: calc(700 * var(--u));
+}
+
+.scheda h3 {
+  font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  font-size: var(--t-testo);
+  line-height: var(--t-testo-i);
+  margin: 0 0 calc(35 * var(--u)) 0;
+}
+
+.scheda .testo-piccolo {
+  font-size: var(--t-testo);
+  line-height: var(--t-testo-i);
+}
+
+.scheda-logo {
+  margin-top: auto;
+  height: calc(68 * var(--u));
+}
+
+.scheda-logo img {
+  height: 100%;
+  width: auto;
+}
+
+
+/* ===========================================================
+   MANIFESTI (slot vuoti da riempire dopo)
+   =========================================================== */
+
+/* la sezione nera sale sotto le schede: 30% della card resta
+   sull'arancione, il 70% finisce sul nero.
+   position:relative serve perché il nero copra l'arancione. */
+.sezione-manifesti {
+  position: relative;
+  margin-top: calc(-278 * var(--u));
+  padding-top: calc(365 * var(--u));
+}
+
+.manifesti {
+  margin-top: calc(48 * var(--u));
+  display: flex;
+  gap: calc(24 * var(--u));
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.manifesto {
+  flex: 0 0 auto;
+  width: calc(340 * var(--u));
+  height: auto;
+  border-radius: 14px;
+  cursor: zoom-in;
+  transition: transform 0.18s ease;
+}
+
+
+/* ===========================================================
+   LENTE: il manifesto a schermo intero quando ci clicchi
+   =========================================================== */
+
+.lente {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background-color: rgba(41, 42, 37, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px 24px;
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0.28s;
+}
+
+.lente[data-aperta="1"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lente img {
+  max-width: min(100%, 640px);
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  cursor: default;
+  /* entra ingrandendosi appena */
+  transform: scale(0.94);
+  transition: transform 0.28s ease;
+}
+
+.lente[data-aperta="1"] img {
+  transform: scale(1);
+}
+
+.lente-chiudi {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: none;
+  color: var(--crema);
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.manifesto:hover {
+  transform: scale(1.02);
+}
+
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+
+.footer {
+  background-color: var(--crema);
+  color: var(--scuro);
+  padding-top: 72px;
+  padding-bottom: 36px;
+}
+
+.footer-logo img {
+  height: 44px;
+  width: auto;
+}
+
+.footer-colonne {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--gutter);
+  margin-top: 48px;
+}
+
+.footer-colonne a {
+  color: var(--scuro);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.footer-colonne a:hover {
+  color: var(--arancio);
+}
+
+.footer-basso {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(41, 42, 37, 0.15);
+  font-size: 14px;
+}
+
+.footer-basso a {
+  color: var(--scuro);
+  text-decoration: none;
+}
+
+
+/* ===========================================================
+   ANIMAZIONE A COMPARSA CON LO SCORRIMENTO
+   =========================================================== */
+
+.comparsa {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* a comparsa finita togliamo del tutto il transform:
+   se resta, il browser tiene la card su un livello separato
+   e al passaggio del mouse il testo si stringe */
+.comparsa.visibile {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ===========================================================
+   HOVER DELLE CARD
+   Deve stare dopo .comparsa: la comparsa usa anche lei il
+   transform con una transizione da 0.7s e, se l'hover fosse
+   scritto prima, erediterebbe quella durata — lento, e con
+   il testo che si sgrana per tutto il tempo dell'animazione.
+   =========================================================== */
+
+.card,
+.scheda {
+  transition: transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  .card:hover,
+  .scheda:hover {
+    transform: scale(1.03);
+  }
+}
+
+
+/* ===========================================================
+   MOBILE
+   =========================================================== */
+
+@media (max-width: 1000px) {
+
+  /* --- navbar: via il menu in linea, dentro il burger --- */
+  .navbar { top: 30px; }
+  .navbar-pillola { display: none; }
+  .burger { display: flex; }
+  .marchio img { height: 32px; }
+
+  /* --- hero --- */
+  /* overflow nascosto: i libri sono più larghi dello schermo e vanno tagliati */
+  /* la hero del telefono è alta 667 come nel progetto (375 x 667)
+     e cresce piano piano fino a raggiungere quella del desktop */
+  .hero { height: calc(640.6px + 7.04vw); min-height: 0; max-height: none; overflow: hidden; padding-bottom: 0; }
+  .hero-testi { padding-top: 92px; }
+  .display-hero { white-space: normal; }
+  .freccia-giu { font-size: 14px; margin: 24px 0 0; }
+  .sub-hero { margin-top: 6px; }
+  /* i libri sono ingranditi e centrati, come nel mockup del telefono */
+  .hero-immagine {
+    /* qui i libri stanno nel flusso, subito sotto al testo:
+       così non lo coprono mai, a qualsiasi larghezza */
+    position: static;
+    transform: none;
+    /* larghezza: a 375 i libri sono al 146% come nel prototipo,
+       e scendono al 105,3% del desktop quando si arriva a 1000,
+       così al cambio di impaginazione non si vede il salto */
+    width: calc(244.2px + 80.88vw);
+    /* il margine negativo li fa risalire quel poco che serve per
+       farli cominciare a 389, come nel prototipo, senza toccare il
+       sottotitolo; quello che avanza in basso lo taglia la hero */
+    margin: -17px 0 0 calc((100% - (244.2px + 80.88vw)) / 2);
+    max-width: none;
+  }
+  .pallino-scroll { display: none; }
+
+  /* --- tutto su una colonna sola --- */
+  .due-colonne,
+  .riga-dati,
+  .card-grande,
+  .due-schede,
+  .footer-colonne {
+    grid-template-columns: 1fr;
+  }
+
+  .sezione { padding-top: 56px; padding-bottom: 56px; }
+  #fenomeno { padding-top: 56px; padding-bottom: 56px; }
+  .due-colonne { margin-top: 40px; }
+  .dati { margin-top: 56px; }
+
+  /* --- card dei dati: quadrate e in colonna --- */
+  .dati, .riga-dati { gap: 20px; }
+  .card { padding: 26px; border-radius: 26px; }
+
+  /* anche la card grande si gira al tocco */
+  .card-grande { position: relative; }
+
+  .card-grande > div {
+    transition: opacity 0.25s ease;
+  }
+
+  .card-grande .retro {
+    display: block;
+    position: absolute;
+    top: 26px;
+    left: 26px;
+    right: 26px;
+    bottom: 26px;
+    margin: 0;
+    font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    font-size: var(--t-retro);
+    line-height: var(--t-retro-i);
+    letter-spacing: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .card-grande.girata > div { opacity: 0; }
+  .card-grande.girata .retro { opacity: 1; }
+
+  /* la card 92,5% mostra i pallini invece delle barre */
+  /* display:block, così i pallini prendono l'altezza che serve loro */
+  .card-grande { display: block; aspect-ratio: auto; padding-bottom: 26px; }
+  .card-grande .numero-grande { text-align: right; }
+  .card-grande .etichetta { display: none; }
+  .gruppo-barre { display: none; }
+  .pallini { display: grid; }
+
+  .riga-dati .card { aspect-ratio: 1 / 0.994; padding: 26px; }
+  .riga-dati .fronte { padding: 20px 30px 26px 26px; }
+  .riga-dati .retro { top: 26px; left: 26px; right: 26px; bottom: 26px; }
+  /* i numeri delle card in Light */
+  .riga-dati .numero-grande { text-align: right; font-weight: 300; }
+  /* 800M e 1,2M restano allineati ai rettangoli sotto */
+  .card-confronto .numero-grande { text-align: left; }
+
+  /* il 92,5% è scritto come il 60%: stesso carattere e stesso corpo */
+  .card-grande .numero-grande {
+    font-family: "Roboto Flex", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    font-size: var(--t-numero-2);
+    letter-spacing: -0.03em;
+  }
+
+  .barra-alta { height: 249px; }
+  .barra-bassa { height: 13px; }
+
+  /* la sezione di Kromo.ai torna compatta */
+  .nasce-testi .testo:first-of-type { margin-top: 32px !important; }
+  .frase-grande { margin-top: 60px; }
+
+  /* --- immagini delle sezioni --- */
+  /* il camaleonte va sotto al testo, non sopra */
+  .sezione-nasce { display: flex; flex-direction: column; }
+  /* sul cellulare sta sotto al testo, quindi va girato dritto */
+  .kromo-occhiali {
+    order: 2;
+    position: static;
+    width: 136%;
+    margin: 8px 0 -150px -18%;
+    transform: rotate(180deg);
+  }
+  /* l'occhio passa sopra alle due schede e si ferma dove sale il nero */
+  .ritaglio-occhio { position: absolute; overflow: hidden; z-index: 4; bottom: 120px; }
+  /* l'occhio sta all'altezza della prima scheda, tagliato dal bordo destro */
+  .kromo-scocciato { position: absolute; top: auto; bottom: 180px; right: -10px; height: 270px; width: auto; }
+
+  /* --- schede: una sotto l'altra --- */
+  .due-schede { margin-top: 72px; margin-bottom: -120px; gap: 22px; }
+  .scheda { min-height: 0; padding: 26px; }
+  .due-schede .scheda:last-child { padding-left: 26px; padding-right: 26px; }
+  .scheda-logo { height: 44px; margin-top: 28px; }
+  .gentile-testi .testo { margin-top: 30px; }
+  .gentile-testi .testo-piccolo { margin-top: 26px; }
+  .colonna-unica { margin-top: 40px; }
+  .kromo-scocciato { top: auto; }
+  .sezione-manifesti { margin-top: -120px; padding-top: 296px; }
+
+  .manifesto { width: 78vw; }
+  /* sul telefono i manifesti stanno più staccati dal testo:
+     68px a 375, che poi tornano piano piano a quelli del
+     desktop quando si arriva a 1000 */
+  .manifesti { margin-top: calc(88.8px - 5.552vw); }
+  /* sul telefono le misure tornano fisse */
+  .nasce-testi { max-width: none; }
+  .nasce-testi .testo:first-of-type { margin-top: 32px; }
+  .gentile-testi { max-width: none; }
+  .gentile-testi .testo-piccolo { max-width: none; }
+  .colonna-unica { max-width: none; }
+  .due-schede .scheda:last-child .testo-piccolo { max-width: none; }
+
+  /* --- footer --- */
+  .footer-colonne { gap: 32px; }
+  .footer-colonne a { margin-bottom: 22px; }
+  .footer-basso { flex-direction: row; gap: 10px; }
+}
+
+
+/* chi ha le animazioni ridotte vede tutto fermo */
+@media (prefers-reduced-motion: reduce) {
+  .comparsa { opacity: 1; transform: none; }
+  .banner-riga { animation: none; }
+}

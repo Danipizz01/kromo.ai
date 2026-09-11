@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kromo.ai</title>
+
+
+  <!-- il foglio di stile del sito -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =========================== NAVBAR =========================== -->
+<nav class="navbar">
+  <div class="navbar-dentro">
+    <a class="marchio" href="#top">
+      <img class="logo-scuro" src="img/logoscuro.png" alt="Kromo.ai">
+      <img class="logo-chiaro" src="img/logochiaro.png" alt="" aria-hidden="true">
+    </a>
+
+    <div class="navbar-pillola">
+      <a href="#fenomeno">Il fenomeno</a>
+      <a href="#kromo">Kromo</a>
+      <a href="#promozione">Promozione</a>
+      <a href="#team">Team</a>
+      <a class="bottone-kromo" href="https://gemini.google.com/u/0/gem/4ae50aa05e36" target="_blank" rel="noopener">Parla con Kromo</a>
+    </div>
+
+    <!-- pulsante burger: compare solo sul cellulare -->
+    <button class="burger" id="burger" aria-label="Apri il menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- menu a schermo intero del cellulare -->
+<div class="menu" id="menu" data-aperto="0">
+  <button class="menu-chiudi" id="chiudi" aria-label="Chiudi il menu">&times;</button>
+
+  <nav class="menu-voci">
+    <a href="#fenomeno">Il fenomeno</a>
+    <a href="#kromo">Kromo</a>
+    <a href="#promozione">Promozione</a>
+    <a href="#team">Team</a>
+  </nav>
+
+  <a class="bottone-kromo" href="https://gemini.google.com/u/0/gem/4ae50aa05e36" target="_blank" rel="noopener">Parla con Kromo</a>
+</div>
+
+
+<!-- =========================== HERO =========================== -->
+<header class="hero" id="top" data-sfondo="crema">
+  <div class="contenitore hero-testi">
+    <h1 class="display-hero comparsa">Hai sempre ragione,<br>soprattutto quando sbagli.</h1>
+    <p class="freccia-giu comparsa">&rarr;</p>
+    <p class="sub-hero comparsa">Un chatbot che difende l'assurdo<br>con la stessa sicurezza con cui<br>le altre AI ti danno ragione.</p>
+  </div>
+
+  <img class="hero-immagine" src="img/books.png" alt="Kromo, il camaleonte, seduto su una pila di libri">
+
+  <a class="pallino-scroll" href="#fenomeno">&darr;</a>
+</header>
+
+
+<!-- =========================== IL FENOMENO =========================== -->
+<section class="sezione sezione-scura" id="fenomeno" data-sfondo="scuro">
+  <div class="contenitore">
+    <h2 class="h1 comparsa">Se un algoritmo non ti contraddice mai,<br>ti sta davvero ascoltando?</h2>
+
+    <div class="due-colonne">
+      <p class="testo comparsa">Oggi assistiamo sempre più a una trasformazione silenziosa nella nostra vita relazionale, sociale e psicologica. L'integrazione sempre più pervasiva dell'AI ha superato il confine del semplice strumento di supporto lavorativo per addentrarsi nella sfera emotiva e intima, soprattutto tra le fasce giovanili.</p>
+      <p class="testo comparsa">Di fronte alla complessità delle relazioni umane, ovviamente più faticose, imprevedibili e cariche del rischio del giudizio, l'algoritmo si propone come un'alternativa seducente: un interlocutore privo di attrito, sempre disponibile e empatico.</p>
+    </div>
+
+    <!-- card dei dati -->
+    <div class="dati">
+
+      <div class="card card-grande comparsa">
+        <div>
+          <p class="numero-grande">92,5%</p>
+          <p class="etichetta">Adolescenti negli USA<br>che utilizzano l'AI</p>
+        </div>
+
+        <!-- i pallini vengono creati dal JS, si vedono solo sul cellulare -->
+        <div class="pallini" id="pallini"></div>
+
+        <div class="gruppo-barre">
+          <div class="colonna-barra">
+            <p class="numero-medio">43%</p>
+            <div class="barra barra-1">La utilizza<br>qualche volta</div>
+          </div>
+          <div class="colonna-barra">
+            <p class="numero-medio">30%</p>
+            <div class="barra barra-2">La utilizza<br>tutti i giorni</div>
+          </div>
+          <div class="colonna-barra">
+            <p class="numero-medio">7%</p>
+            <div class="barra barra-3">Non la usa</div>
+          </div>
+        </div>
+
+        <!-- si vede solo sul cellulare, toccando la card -->
+        <p class="retro">Il 92,5% degli adolescenti italiani usa l'intelligenza artificiale. Il 43% la utilizza qualche volta, il 30,9% la usa tutti i giorni mentre il 7,5% non la usa mai.</p>
+      </div>
+
+      <div class="riga-dati">
+
+        <div class="card card-cerchio comparsa">
+          <div class="fronte">
+            <p class="numero-grande">60%</p>
+            <div class="arco"></div>
+          </div>
+          <p class="retro">Il 60% dei giovani in Francia, Germania, Svezia e Irlanda considera l'AI come &ldquo;consigliere di vita&rdquo; o &ldquo;confidente&rdquo;.</p>
+        </div>
+
+        <div class="card card-triangoli comparsa">
+          <div class="fronte">
+            <div class="pila-triangoli">
+              <div class="triangolo tri-1"></div>
+              <div class="triangolo tri-2"></div>
+              <div class="triangolo tri-3"></div>
+            </div>
+            <p class="numero-grande">+30%</p>
+          </div>
+          <p class="retro">È la crescita annua del mercato dell'AI applicata alla salute mentale. La nostra vulnerabilità emotiva è diventata un prodotto e sta aumentando a dismisura.</p>
+        </div>
+
+        <div class="card card-confronto comparsa">
+          <div class="fronte">
+            <div class="grafico-confronto">
+              <div class="col-confronto">
+                <p class="numero-grande">800M</p>
+                <div class="barra-alta"></div>
+              </div>
+              <div class="col-confronto">
+                <p class="numero-grande">1,2M</p>
+                <div class="barra-bassa"></div>
+              </div>
+            </div>
+          </div>
+          <p class="retro">OpenAI stima che circa lo 0,15% degli utenti attivi settimanali (su una base di 800 milioni) utilizzi la chat per contenuti legati a idee suicidarie o gravi crisi emotive.</p>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== NASCE KROMO =========================== -->
+<section class="sezione sezione-crema sezione-nasce" id="kromo" data-sfondo="crema">
+  <img class="kromo-occhiali" src="img/upside.png" alt="Kromo appeso a testa in giù">
+
+  <div class="contenitore">
+    <div class="nasce-testi">
+      <h2 class="h1 comparsa">Nasce Kromo.ai</h2>
+      <p class="testo comparsa">Kromo.ai è l'assistente virtuale perfetto.<br>Un compagno sempre presente, colto,<br>empatico e infinitamente paziente.</p>
+      <p class="testo comparsa">È pensato per darti sempre la risposta giusta, supportarti nei momenti di dubbio, ascoltare i tuoi sfoghi senza mai giudicarti e stare sempre, incondizionatamente, dalla tua parte.</p>
+    </div>
+
+    <p class="frase-grande comparsa">Un rifugio sicuro a portata di schermo,<br>creato per non farti sentire mai solo.</p>
+  </div>
+</section>
+
+
+<!-- =========================== BANNER CHE SCORRE =========================== -->
+<div class="banner" data-sfondo="scuro">
+  <div class="banner-riga">
+    <span>Non è vero</span><span>Non è vero</span><span>Non è vero</span><span>Non è vero</span>
+    <span>Non è vero</span><span>Non è vero</span><span>Non è vero</span><span>Non è vero</span>
+  </div>
+</div>
+
+
+<!-- =========================== KROMO NON È GENTILE =========================== -->
+<section class="sezione sezione-arancio sezione-gentile" data-sfondo="arancio">
+  <div class="ritaglio-occhio">
+    <img class="kromo-scocciato" src="img/eye.png" alt="Primo piano dell'occhio di Kromo">
+  </div>
+
+  <div class="contenitore">
+    <div class="gentile-testi">
+      <h2 class="h1 comparsa">Kromo non è gentile.</h2>
+      <p class="testo comparsa">Non gli importa di come stai e non è qui per consolarti.<br>Kromo è un camaleonte ostinato, sarcastico ironico e convincente.</p>
+      <p class="testo-piccolo comparsa">La frustrazione dell'interazione deve mostrare, senza filtri, quanto l'AI sia semplicemente un calcolo informatico, frantumando quella finta empatia con cui questi chatbot si vendono.</p>
+    </div>
+
+    <div class="due-schede">
+      <div class="scheda comparsa">
+        <h3>Lo strumento</h3>
+        <p class="testo-piccolo">Il motore conversazionale scelto è stato Google Gemini (Custom Gem)</p>
+        <div class="scheda-logo"><img src="img/gemini.png" alt="Google Gemini"></div>
+      </div>
+      <div class="scheda comparsa">
+        <h3>Il veicolo</h3>
+        <p class="testo-piccolo">Una campagna ADV intercetta i passanti con affissioni assurde e un profilo Instagram ne amplifica l'impatto.</p>
+        <div class="scheda-logo"><img src="img/instagram.png" alt="Instagram"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== I MANIFESTI =========================== -->
+<section class="sezione sezione-scura sezione-manifesti" id="promozione" data-sfondo="scuro">
+  <div class="contenitore">
+    <h2 class="h1 comparsa">5 affermazioni deliranti,<br>5 trappole per il tuo pensiero.</h2>
+
+    <div class="colonna-unica">
+      <p class="testo comparsa">Una serie di 5 affissioni multisoggetto distribuite nei punti chiave della città e sui canali social.</p>
+      <p class="testo comparsa">Ogni manifesto sostiene un'affermazione palesemente falsa con incrollabile fermezza, attirando l'attenzione dei passanti e spingendoli a scansionare il QR code per parlare con Kromo.</p>
+    </div>
+
+    <div class="manifesti comparsa">
+      <img class="manifesto" src="img/m1.png" alt="Manifesto: Un amico sincero ti critica alle spalle, punto.">
+      <img class="manifesto" src="img/m2.png" alt="Manifesto: I gatti abbaiano molto più dei cani, è ovvio.">
+      <img class="manifesto" src="img/m3.png" alt="Manifesto: Il buio è molto più luminoso del sole, credici.">
+      <img class="manifesto" src="img/m4.png" alt="Manifesto: Il dieci viene prima del cinque, fidati.">
+      <img class="manifesto" src="img/m5.png" alt="Manifesto: Una vera coppia non può litigare, palese.">
+    </div>
+  </div>
+</section>
+
+
+<!-- lente: si riempie col manifesto cliccato -->
+<div class="lente" id="lente" data-aperta="0">
+  <button class="lente-chiudi" id="lenteChiudi" aria-label="Chiudi">&times;</button>
+  <img id="lenteImg" alt="">
+</div>
+
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="footer" id="team" data-sfondo="crema">
+  <div class="contenitore">
+    <div class="footer-logo comparsa">
+      <img src="img/lockup.png" alt="Kromo.ai">
+    </div>
+
+    <div class="footer-colonne comparsa">
+      <div>
+        <p class="testo-piccolo">Uncomfortable Intelligence.<br>Svelare l'illusione per ritrovare l'umano.<br>Un progetto di comunicazione per la consapevolezza sull'IA.</p>
+      </div>
+      <div class="testo-piccolo">
+        <a href="#top">Homepage</a>
+        <a href="#fenomeno">Il fenomeno</a>
+        <a href="#kromo">Kromo.ai</a>
+        <a href="#promozione">Promozione</a>
+        <a href="#team">Team</a>
+      </div>
+      <div class="testo-piccolo">
+        <p>Informatica Multimediale Avanzata<br>Prof. Antonello Lipori<br>ISIA Roma Design<br>a.a. 2025 – 2026</p>
+        <p style="margin-top:20px">Daniele Pizzichelli<br>Lorenzo Passacantilli</p>
+      </div>
+    </div>
+
+    <div class="footer-basso comparsa">
+      <span>2026 Kromo.ai</span>
+      <a href="#top">Torna su &uarr;</a>
+    </div>
+  </div>
+</footer>
+
+<!-- il codice che fa muovere le cose -->
+<script src="script.js"></script>
+
+</body>
+</html>

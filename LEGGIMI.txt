@@ -1,0 +1,31 @@
+SITO KROMO.AI — come è fatto
+
+index.html   la struttura della pagina
+style.css    tutti gli stili
+script.js    scorrimento morbido della navbar, comparsa dei
+             testi, menu del cellulare e lente sui manifesti
+img/         immagini (mascotte, loghi, i 5 manifesti)
+font/        i caratteri, dentro la cartella
+
+APRIRE IL SITO
+Doppio clic su index.html. Non serve internet: i caratteri
+sono dentro la cartella font/, non vengono scaricati da Google.
+
+I CARATTERI
+Ci sono tutti e quattro dentro font/, li carica il foglio di
+stile con le regole @font-face che stanno in cima a style.css:
+
+  Google Sans Flex   titoli e navigazione
+  Roboto Flex        testi correnti
+  Hagrid Bold        il titolo della home
+  Freehand Blockletter  il banner "Non è vero"
+
+Il sito non chiede niente a Google: funziona anche offline.
+Le licenze di Google Sans Flex e Roboto Flex sono in questa
+cartella. Hagrid e Freehand Blockletter sono caratteri
+commerciali: prima di lasciare il sito online verifica che la
+licenza copra anche l'uso come webfont.
+
+METTERLO ONLINE
+Carica tutta questa cartella su un hosting statico
+(Netlify, Vercel, GitHub Pages). Non serve altro.
