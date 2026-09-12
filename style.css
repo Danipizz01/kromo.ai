@@ -71,47 +71,57 @@
      Ogni misura cresce da sola fra 390px (cellulare) e 1440px (desktop).
      Il primo valore è il minimo, il terzo il massimo. --- */
 
-  /* --u è l'unità di misura del progetto: vale 1px a 1440 di larghezza
-     e cresce o cala in proporzione insieme alla finestra.
-     Tutte le misure fisse del disegno sono scritte come calc(N * var(--u)),
-     così il sito è sempre la stessa composizione, solo più grande o più piccola. */
-  --u: 0.06944vw;
   /* non avanza più niente fuori dalla griglia: la griglia cresce con lo schermo */
   --fuori: 0px;
 
-  --margine: max(clamp(30px, 11.43px + 4.762vw, 80px), calc(80 * var(--u)));
-  --gutter:  max(clamp(20px, 10.71px + 2.381vw, 45px), calc(45 * var(--u)));
+  --margine: max(clamp(30px, 11.43px + 4.762vw, 80px), 8rem);
+  --gutter:  max(clamp(20px, 10.71px + 2.381vw, 45px), 4.5rem);
 
   /* la display cresce in proporzione alla larghezza: così a 1440 è 96px
      e la seconda riga sta sempre su una riga sola */
-  --t-display:    max(clamp(40px, 6.667vw, 96px), calc(96 * var(--u)));
-  --t-display-i:  max(clamp(48px, 6.944vw, 100px), calc(100 * var(--u)));
-  --t-sub:        max(clamp(20px, 16.29px + 0.952vw, 30px), calc(30 * var(--u)));
-  --t-sub-i:      max(clamp(26px, 21.69px + 1.105vw, 37.6px), calc(37.6 * var(--u)));
-  --t-h1:         max(clamp(28px, 14.6px + 3.429vw, 64px), calc(64 * var(--u)));
-  --t-h1-i:       max(clamp(38px, 26.1px + 3.048vw, 70px), calc(70 * var(--u)));
-  --t-testo:      max(clamp(17px, 12.42px + 1.221vw, 30px), calc(30 * var(--u)));
-  --t-testo-i:    max(clamp(24.6px, 20.80px + 1.014vw, 35.2px), calc(35.2 * var(--u)));
-  --t-piccolo:    max(clamp(16px, 14.5px + 0.381vw, 20px), calc(20 * var(--u)));
-  --t-piccolo-i:  max(clamp(24px, 22.9px + 0.286vw, 27px), calc(27 * var(--u)));
-  --t-frase:      max(clamp(28px, 17.6px + 2.667vw, 56px), calc(56 * var(--u)));
-  --t-frase-i:    max(clamp(34px, 22.1px + 3.048vw, 66px), calc(66 * var(--u)));
-  --t-numero:     max(clamp(48px, 16.8px + 8.000vw, 132px), calc(132 * var(--u)));
-  --t-numero-2:   max(clamp(40px, 34.1px + 1.524vw, 56px), calc(56 * var(--u)));
-  --t-numero-med: max(clamp(32px, 20.1px + 3.048vw, 64px), calc(64 * var(--u)));
-  --t-etic:       max(clamp(18px, 13.5px + 1.143vw, 30px), calc(30 * var(--u)));
-  --t-etic-i:     max(clamp(24px, 20.3px + 0.952vw, 34px), calc(34 * var(--u)));
-  --t-barra:      max(clamp(15px, 11.3px + 0.952vw, 25px), calc(25 * var(--u)));
-  --t-barra-i:    max(clamp(20px, 16.7px + 0.857vw, 29px), calc(29 * var(--u)));
-  --t-retro:      max(clamp(18px, 13.5px + 1.143vw, 30px), calc(30 * var(--u)));
-  --t-retro-i:    max(clamp(25px, 20.2px + 1.238vw, 38px), calc(38 * var(--u)));
+  --t-display:    max(clamp(40px, 6.667vw, 96px), 9.6rem);
+  --t-display-i:  max(clamp(48px, 6.944vw, 100px), 10rem);
+  --t-sub:        max(clamp(20px, 16.29px + 0.952vw, 30px), 3rem);
+  --t-sub-i:      max(clamp(26px, 21.69px + 1.105vw, 37.6px), 3.76rem);
+  --t-h1:         max(clamp(28px, 14.6px + 3.429vw, 64px), 6.4rem);
+  --t-h1-i:       max(clamp(38px, 26.1px + 3.048vw, 70px), 7rem);
+  --t-testo:      max(clamp(17px, 12.42px + 1.221vw, 30px), 3rem);
+  --t-testo-i:    max(clamp(24.6px, 20.80px + 1.014vw, 35.2px), 3.52rem);
+  --t-piccolo:    max(clamp(16px, 14.5px + 0.381vw, 20px), 2rem);
+  --t-piccolo-i:  max(clamp(24px, 22.9px + 0.286vw, 27px), 2.7rem);
+  --t-frase:      max(clamp(28px, 17.6px + 2.667vw, 56px), 5.6rem);
+  --t-frase-i:    max(clamp(34px, 22.1px + 3.048vw, 66px), 6.6rem);
+  --t-numero:     max(clamp(48px, 16.8px + 8.000vw, 132px), 13.2rem);
+  --t-numero-2:   max(clamp(40px, 34.1px + 1.524vw, 56px), 5.6rem);
+  --t-numero-med: max(clamp(32px, 20.1px + 3.048vw, 64px), 6.4rem);
+  --t-etic:       max(clamp(18px, 13.5px + 1.143vw, 30px), 3rem);
+  --t-etic-i:     max(clamp(24px, 20.3px + 0.952vw, 34px), 3.4rem);
+  --t-barra:      max(clamp(15px, 11.3px + 0.952vw, 25px), 2.5rem);
+  --t-barra-i:    max(clamp(20px, 16.7px + 0.857vw, 29px), 2.9rem);
+  --t-retro:      max(clamp(18px, 13.5px + 1.143vw, 30px), 3rem);
+  --t-retro-i:    max(clamp(25px, 20.2px + 1.238vw, 38px), 3.8rem);
 
   /* misura del testo del banner: la banda nera è alta uguale */
-  --testo-banner: max(clamp(80px, 39.1px + 10.476vw, 190px), calc(190 * var(--u)));
+  --testo-banner: max(clamp(80px, 39.1px + 10.476vw, 190px), 19rem);
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* --- L'UNITÀ DI MISURA DEL SITO ---
+   1rem vale 10px quando lo schermo è largo 1440, e cresce o cala
+   in proporzione insieme alla finestra. Così ogni misura presa da
+   Figma si scrive semplicemente divisa per dieci: 80px -> 8rem,
+   346px -> 34.6rem, e il sito resta sempre la stessa composizione,
+   solo più grande o più piccola. */
+html {
+  font-size: 0.6944vw;
+}
+
+/* il testo che non ha una misura sua resta della grandezza normale */
+body {
+  font-size: 16px;
 }
 
 /* niente scorrimento laterale: le immagini che sbordano vengono tagliate */
@@ -216,7 +226,7 @@ h1, .h1 {
 
 .navbar {
   position: fixed;
-  top: calc(43 * var(--u));
+  top: 4.3rem;
   left: 0;
   right: 0;
   z-index: 100;
@@ -258,17 +268,17 @@ h1, .h1 {
 }
 
 .marchio img {
-  height: calc(52 * var(--u));
+  height: 5.2rem;
   width: auto;
 }
 
 .navbar-pillola {
   display: flex;
   align-items: center;
-  gap: calc(30 * var(--u));
+  gap: 3rem;
   background-color: var(--arancio);
   border-radius: 999px;
-  padding: calc(10 * var(--u)) calc(38 * var(--u));
+  padding: 1rem 3.8rem;
 }
 
 .navbar a {
@@ -279,7 +289,7 @@ h1, .h1 {
   letter-spacing: 0.03em;
   color: var(--crema);
   text-decoration: none;
-  padding: calc(10 * var(--u));
+  padding: 1rem;
   border-radius: 999px;
 }
 
@@ -471,7 +481,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 .bottone-kromo {
   background-color: var(--scuro);
   color: var(--crema) !important;
-  padding: calc(10 * var(--u)) calc(24 * var(--u)) !important;
+  padding: 1rem 2.4rem !important;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
@@ -490,12 +500,12 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   /* la hero è alta 1024 quando lo schermo è largo 1440, e cresce o
      cala in proporzione: la sezione nera comincia sempre lì,
      qualunque sia l'altezza della finestra */
-  height: calc(1024 * var(--u));
+  height: 102.4rem;
   overflow: hidden;
 }
 
 .hero-testi {
-  padding-top: calc(144 * var(--u));
+  padding-top: 14.4rem;
   position: relative;
   z-index: 2;
 }
@@ -506,15 +516,15 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 
 .freccia-giu {
   color: var(--arancio);
-  font-size: calc(27 * var(--u));
+  font-size: 2.7rem;
   line-height: 1;
   /* margin-bottom a zero: il margine di default del <p>
      schiaccerebbe la distanza dal sottotitolo */
-  margin: calc(12 * var(--u)) 0 0;
+  margin: 1.2rem 0 0;
 }
 
 .sub-hero {
-  margin-top: calc(13 * var(--u));
+  margin-top: 1.3rem;
   /* gli a capo sono scritti a mano nel testo, così le tre righe
      restano identiche al progetto a qualsiasi larghezza */
   max-width: none;
@@ -526,7 +536,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   /* centrata: sopra i 1440 smette di crescere e resta al centro */
   left: 50%;
   transform: translateX(-50%);
-  top: calc(346 * var(--u));
+  top: 34.6rem;
   /* 105,3%: così i libri arrivano esatti al fondo della hero,
      che nel progetto è alta 1024 a 1440 di larghezza */
   width: 105.3%;
@@ -544,17 +554,17 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 .pallino-scroll {
   position: absolute;
   right: calc(var(--fuori) + var(--margine));
-  bottom: calc(44 * var(--u));
+  bottom: 4.4rem;
   z-index: 3;
-  width: calc(75 * var(--u));
-  height: calc(75 * var(--u));
+  width: 7.5rem;
+  height: 7.5rem;
   border-radius: 50%;
   background-color: var(--arancio);
   color: var(--crema);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(28 * var(--u));
+  font-size: 2.8rem;
   text-decoration: none;
   transition: transform 0.18s ease;
 }
@@ -593,23 +603,23 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gutter);
-  margin-top: calc(76 * var(--u));
+  margin-top: 7.6rem;
 }
 
 /* nella sezione dei manifesti il testo sta su una colonna sola */
 .colonna-unica {
-  margin-top: calc(71 * var(--u));
-  max-width: calc(620 * var(--u));
+  margin-top: 7.1rem;
+  max-width: 62rem;
 }
 
 .colonna-unica p + p {
-  margin-top: calc(35 * var(--u));
+  margin-top: 3.5rem;
 }
 
 /* la sezione del fenomeno ha il titolo più staccato dall'alto */
 #fenomeno {
-  padding-top: calc(87 * var(--u));
-  padding-bottom: calc(158 * var(--u));
+  padding-top: 8.7rem;
+  padding-bottom: 15.8rem;
 }
 
 
@@ -618,16 +628,16 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
    =========================================================== */
 
 .dati {
-  margin-top: calc(115 * var(--u));
+  margin-top: 11.5rem;
   display: flex;
   flex-direction: column;
-  gap: calc(23 * var(--u));
+  gap: 2.3rem;
 }
 
 .riga-dati {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: calc(30 * var(--u));
+  gap: 3rem;
 }
 
 .card {
@@ -636,8 +646,8 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   overflow: hidden;
   background-color: var(--crema);
   color: var(--scuro);
-  border-radius: calc(30 * var(--u));
-  padding: calc(40 * var(--u)) calc(58 * var(--u));
+  border-radius: 3rem;
+  padding: 4rem 5.8rem;
   transition: transform 0.18s ease;
 }
 
@@ -656,7 +666,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   font-size: var(--t-numero-med);
   line-height: 1;
   letter-spacing: -0.02em;
-  margin: 0 0 calc(12 * var(--u)) 0;
+  margin: 0 0 1.2rem 0;
 }
 
 .etichetta {
@@ -664,7 +674,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   font-weight: 300;
   font-size: var(--t-etic);
   line-height: var(--t-etic-i);
-  margin-top: calc(30 * var(--u));
+  margin-top: 3rem;
 }
 
 /* --- griglia di pallini: sostituisce le barre sul cellulare --- */
@@ -699,14 +709,14 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 .card-grande {
   display: grid;
   grid-template-columns: 1fr 1.553fr;
-  gap: calc(40 * var(--u));
+  gap: 4rem;
   aspect-ratio: 1280 / 385.5;
-  padding: calc(70 * var(--u)) calc(76 * var(--u)) 0 calc(62 * var(--u));
+  padding: 7rem 7.6rem 0 6.2rem;
 }
 
 .gruppo-barre {
   display: flex;
-  gap: calc(48.5 * var(--u));
+  gap: 4.85rem;
   align-items: flex-end;
 }
 
@@ -718,21 +728,21 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 }
 
 .barra {
-  padding: calc(20 * var(--u)) calc(16 * var(--u));
+  padding: 2rem 1.6rem;
   color: var(--crema);
   font-weight: 300;
   font-size: var(--t-barra);
   line-height: var(--t-barra-i);
 }
 
-.barra-1 { background-color: var(--rosso-scuro); height: calc(230 * var(--u)); }
-.barra-2 { background-color: var(--arancio); height: calc(172 * var(--u)); }
-.barra-3 { background-color: var(--rosa); height: calc(53 * var(--u)); }
+.barra-1 { background-color: var(--rosso-scuro); height: 23rem; }
+.barra-2 { background-color: var(--arancio); height: 17.2rem; }
+.barra-3 { background-color: var(--rosa); height: 5.3rem; }
 
 /* --- card del 60% --- */
 .riga-dati .card {
   aspect-ratio: 1 / 0.994;
-  padding: calc(30 * var(--u));
+  padding: 3rem;
 }
 
 /* --- le card della seconda riga si girano al passaggio del mouse ---
@@ -750,14 +760,14 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   left: 0;
   right: 0;
   bottom: 0;
-  padding: calc(24 * var(--u)) calc(36 * var(--u)) calc(30 * var(--u)) calc(30 * var(--u));
+  padding: 2.4rem 3.6rem 3rem 3rem;
 }
 
 .riga-dati .retro {
-  top: calc(30 * var(--u));
-  left: calc(30 * var(--u));
-  right: calc(30 * var(--u));
-  bottom: calc(30 * var(--u));
+  top: 3rem;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3rem;
 }
 
 .riga-dati .retro {
@@ -834,8 +844,8 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 
 .card-triangoli .numero-grande {
   position: absolute;
-  left: calc(22 * var(--u));
-  bottom: calc(38 * var(--u));
+  left: 2.2rem;
+  bottom: 3.8rem;
 }
 
 /* --- card 800M / 1,2M --- */
@@ -857,18 +867,18 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 }
 
 .col-confronto .numero-grande {
-  margin-bottom: calc(17 * var(--u));
+  margin-bottom: 1.7rem;
 }
 
 .barra-alta {
   width: 100%;
-  height: calc(307 * var(--u));
+  height: 30.7rem;
   background-color: var(--rosa-chiaro);
 }
 
 .barra-bassa {
   width: 100%;
-  height: calc(16 * var(--u));
+  height: 1.6rem;
   background-color: var(--rosa);
 }
 
@@ -880,23 +890,23 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 .sezione-nasce {
   position: relative;
   overflow: hidden;
-  padding-top: calc(135 * var(--u));
-  padding-bottom: calc(170 * var(--u));
+  padding-top: 13.5rem;
+  padding-bottom: 17rem;
 }
 
 .nasce-testi {
-  max-width: calc(620 * var(--u));
+  max-width: 62rem;
   position: relative;
   z-index: 2;
 }
 
 .nasce-testi p + p {
-  margin-top: calc(28 * var(--u));
+  margin-top: 2.8rem;
 }
 
 /* il primo paragrafo è staccato dal titolo */
 .nasce-testi .testo:first-of-type {
-  margin-top: calc(79 * var(--u));
+  margin-top: 7.9rem;
 }
 
 /* i due paragrafi sono D/text in Light, come nelle altre sezioni */
@@ -908,9 +918,9 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
    misure in vw, così resta nelle stesse proporzioni a ogni larghezza */
 .kromo-occhiali {
   position: absolute;
-  top: calc(-191.5 * var(--u));
+  top: -19.15rem;
   right: var(--fuori);
-  width: calc(763 * var(--u));
+  width: 76.3rem;
   max-width: none;
   z-index: 1;
 }
@@ -918,7 +928,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 .frase-grande {
   position: relative;
   z-index: 2;
-  margin: calc(85 * var(--u)) 0 0;
+  margin: 8.5rem 0 0;
   font-family: "Google Sans Flex", Arial, sans-serif;
   font-weight: 400;
   font-size: var(--t-h1);
@@ -942,7 +952,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 
 .banner-riga {
   display: inline-flex;
-  gap: calc(70 * var(--u));
+  gap: 7rem;
   animation: scorri 26s linear infinite;
 }
 
@@ -969,7 +979,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 
 .sezione-gentile {
   position: relative;
-  padding-top: calc(83 * var(--u));
+  padding-top: 8.3rem;
   padding-bottom: 0;
 }
 
@@ -981,7 +991,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   top: 0;
   left: 0;
   right: 0;
-  bottom: calc(278 * var(--u));
+  bottom: 27.8rem;
   overflow: hidden;
   z-index: 4;
 }
@@ -989,7 +999,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 .gentile-testi {
   position: relative;
   z-index: 2;
-  max-width: calc(975 * var(--u));
+  max-width: 97.5rem;
 }
 
 /* stessa misura del titolo qui sopra */
@@ -999,23 +1009,23 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   font-size: var(--t-h1);
   line-height: var(--t-h1-i);
   letter-spacing: 0;
-  margin-top: calc(71 * var(--u));
+  margin-top: 7.1rem;
 }
 
 .gentile-testi .testo-piccolo {
   font-size: var(--t-testo);
   line-height: var(--t-testo-i);
-  margin-top: calc(50 * var(--u));
-  max-width: calc(600 * var(--u));
-  color: #F8F1E9;
+  margin-top: 5rem;
+  max-width: 60rem;
+  color: rgba(248, 241, 233, 0.75);
 }
 
 /* l'occhio è attaccato al bordo destro della pagina */
 .kromo-scocciato {
   position: absolute;
-  top: calc(-190 * var(--u));
-  right: calc(var(--fuori) - 11 * var(--u));
-  height: calc(1233 * var(--u));
+  top: -19rem;
+  right: calc(var(--fuori) - 1.1rem);
+  height: 123.3rem;
   width: auto;
   max-width: none;
 }
@@ -1026,16 +1036,16 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   z-index: 3;
   display: grid;
   grid-template-columns: 1fr 2.059fr;
-  gap: calc(29 * var(--u));
-  margin-top: calc(131 * var(--u));
+  gap: 2.9rem;
+  margin-top: 13.1rem;
 }
 
 .scheda {
   background-color: var(--crema);
   color: var(--scuro);
-  border-radius: calc(34 * var(--u));
-  padding: calc(50 * var(--u)) calc(8 * var(--u)) calc(65 * var(--u)) calc(34 * var(--u));
-  min-height: calc(400 * var(--u));
+  border-radius: 3.4rem;
+  padding: 5rem 0.8rem 6.5rem 3.4rem;
+  min-height: 40rem;
   display: flex;
   flex-direction: column;
   transition: transform 0.18s ease;
@@ -1043,12 +1053,12 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 
 /* la seconda scheda è rientrata di più, come nel progetto */
 .due-schede .scheda:last-child {
-  padding-left: calc(58 * var(--u));
-  padding-right: calc(34 * var(--u));
+  padding-left: 5.8rem;
+  padding-right: 3.4rem;
 }
 
 .due-schede .scheda:last-child .testo-piccolo {
-  max-width: calc(700 * var(--u));
+  max-width: 70rem;
 }
 
 .scheda h3 {
@@ -1056,7 +1066,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   font-weight: 300;
   font-size: var(--t-testo);
   line-height: var(--t-testo-i);
-  margin: 0 0 calc(35 * var(--u)) 0;
+  margin: 0 0 3.5rem 0;
 }
 
 .scheda .testo-piccolo {
@@ -1066,7 +1076,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
 
 .scheda-logo {
   margin-top: auto;
-  height: calc(68 * var(--u));
+  height: 6.8rem;
 }
 
 .scheda-logo img {
@@ -1084,21 +1094,21 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
    position:relative serve perché il nero copra l'arancione. */
 .sezione-manifesti {
   position: relative;
-  margin-top: calc(-278 * var(--u));
-  padding-top: calc(365 * var(--u));
+  margin-top: -27.8rem;
+  padding-top: 36.5rem;
 }
 
 .manifesti {
-  margin-top: calc(48 * var(--u));
+  margin-top: 4.8rem;
   display: flex;
-  gap: calc(24 * var(--u));
+  gap: 2.4rem;
   overflow-x: auto;
   padding-bottom: 20px;
 }
 
 .manifesto {
   flex: 0 0 auto;
-  width: calc(340 * var(--u));
+  width: 34rem;
   height: auto;
   border-radius: 14px;
   cursor: zoom-in;
