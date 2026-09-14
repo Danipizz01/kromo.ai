@@ -1017,7 +1017,7 @@ body[data-navbar="scuro"] .logo-chiaro  { opacity: 1; }
   line-height: var(--t-testo-i);
   margin-top: 5rem;
   max-width: 60rem;
-  color: rgba(248, 241, 233, 0.75);
+  color: #F8F1E9;
 }
 
 /* l'occhio è attaccato al bordo destro della pagina */
